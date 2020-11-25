@@ -2,41 +2,34 @@ package day02;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-public class VerifyTitleAndUrl {
+public class VerifyTitleAndURL {
     public static void main(String[] args) {
-
         System.setProperty("webdriver.chrome.driver","C:\\Users\\Husamettin\\Documents\\selenium dependencies\\drivers\\chromedriver.exe");
-
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver=new ChromeDriver();
+        //Google ana sayfasina gidelim . https://www.google.com/
         driver.get("https://www.google.com/");
         driver.manage().window().maximize();
-
-
-        String actualleResult = driver.getTitle();
-        String expectedResult = "google";
-
-        if (actualleResult.equals(expectedResult)) {
+        //Sayfa basliginin (title) “google” oldugunu dogrulayin. (verify)
+        String actualResult=driver.getTitle();
+        String expectedResult="google";
+        if (actualResult.equals(expectedResult)){
             System.out.println("Page Title testi PASS");
-        }else{
+        } else {
             System.out.println("Page Title testi FAILED");
-            System.out.println("Actual Page Title : " + actualleResult);
+            System.out.println("Actual Page Title : " + actualResult);
         }
+        // Navigate to youtube homepage https://www.youtube.com/
         driver.navigate().to("https://www.youtube.com/");
-        driver.manage().window().maximize();
-
-        String actualleURL = driver.getCurrentUrl();
-        String expectedURL = "http://www.youtube.com/";
-
-        if (actualleURL.equals(expectedURL)) {
-            System.out.println("Url testi PASS");
-        }else {
-            System.out.println("Page Url testi FAILED");
-            System.out.println("Actual Page Url :" + actualleURL);
+        String actualURL= driver.getCurrentUrl();
+        // Verify if youtube homepage url is “www.youtube.com”
+        // aktuel url= https://www.youtube.com/  beklenen url = www.youtube.com
+        String expectedURL="www.youtube.com/";
+        if (actualURL.equals(expectedURL)){
+            System.out.println("URL testi PASS");
+        } else {
+            System.out.println("URL testi FAILED");
+            System.out.println("Actual URL : " + actualURL);
         }
-
         driver.close();
-
-
     }
 }
